@@ -4,98 +4,47 @@ import "fmt"
 
 type Bio struct {
 	name         string
-	age          int
+	age          string
 	gender       string
-	isSmoker     bool
+	isSmoker     string
 	cigarVariant []string
 	
 }
 
 
-func Survey(name string,age int,gender string,isSmoker bool) {
-	survey := []Bio{
-		Bio{
-			name:     "ilyas",
-			age:      18,
-			gender:   "laki-laki",
-			isSmoker: true,
-			cigarVariant: []string{
-				"Esse",
-				"Marlboro",
-				"Surya",
-			},
-			
-		
-		},
-		Bio{
-			name:     "ilyas",
-			age:      18,
-			gender:   "laki-laki",
-			isSmoker: false,
-			cigarVariant: []string{
-				"Esse",
-				"Marlboro",
-				"Surya",
-			},
-		},
-		Bio{
-			name:     "ilyas",
-			age:      18,
-			gender:   "laki-laki",
-			isSmoker: true,
-			cigarVariant: []string{
-				"Esse",
-				"Marlboro",
-				"Surya",
-			},
-		},
-		Bio{
-			name:     "ilyas",
-			age:      18,
-			gender:   "laki-laki",
-			isSmoker: true,
-			cigarVariant: []string{
-				"Esse",
-				"Marlboro",
-				"Surya",
-			},
-		},
-		Bio{
-			name:     "ilyas ",
-			age:      18,
-			gender:   "laki-laki",
-			isSmoker: false,
-			cigarVariant: []string{
-				"Esse",
-				"Marlboro",
-				"Surya",
-				
-			},
-			
-		},
-	}
-	for _, j := range survey{
-		fmt.Printf("%s,%d,%s,%t ", j.name,j.age,j.gender,j.isSmoker)
-		for _, y := range j.cigarVariant {
-			fmt.Printf(" %s ", y)
-		}
-		fmt.Println("")
-	}
+func Survey(name string,age string,gender string,isSmoker bool) {	
 }
 func SurveyCigar(){
+	data := []Bio{}
+	var input string
 	var name string
-	var age int
+	var age string
 	var gender string
-	var isSmoker bool
-	fmt.Print("siapa nama anda :")
+	var isSmoker string
+	var  variant string
+	
+	fmt.Print("1.Input survey")
+	fmt.Scanln(&input)
+	fmt.Print("siapa nama anda? :")
 	fmt.Scanln(&name)
-	fmt.Print("berapa umur anda :")
+	fmt.Print("berapa umur anda? :")
 	fmt.Scanln(&age)
-	fmt.Print("apa jenis kelamin anda :")
+	fmt.Print("apa jenis kelamin anda? :")
 	fmt.Scanln(&gender)
-	fmt.Print("apakah anda perokok:")
+	fmt.Print("apakah anda perokok? :")
 	fmt.Scanln(&isSmoker)
-	Survey(name,age,gender,isSmoker)
-
-
-}
+	cigarVariant := []string{}
+	cont := true
+	for cont{
+		fmt.Scanln(&variant)
+		if variant == "0" {
+			cont = false
+			}else{
+				cigarVariant =append(cigarVariant,variant)
+				fmt.Print("rokok apa yang pernah anda coba? :")	
+			}
+		}
+	
+		data = append(data, Bio{name: name,age: age,gender: gender,isSmoker: isSmoker,cigarVariant:  cigarVariant})
+		fmt.Print(data)
+} 
